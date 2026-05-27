@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Круиз — Starwave Cruises</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<div class="topbar">
+    Горячая линия: <strong>+7 800 555-35-35</strong> &nbsp;·&nbsp; Ежедневно 9:00–21:00
+</div>
+
+<nav class="navbar">
+    <a href="/index.html" class="nav-logo">Starwave <span>Cruises</span></a>
+    <ul class="nav-links">
+        <li><a href="/index.html#cruises">Круизы</a></li>
+        <li><a href="/index.html#destinations">Направления</a></li>
+        <li><a href="/index.html#about">О нас</a></li>
+    </ul>
+    <div class="nav-spacer"></div>
+    <div class="nav-actions" id="nav-actions"></div>
+</nav>
+
+<!-- Герой загружается динамически -->
+<div class="cruise-hero" id="cruise-hero"></div>
+
+<div class="container">
+    <div id="detail-container">
+        <div class="cruise-detail-layout">
+            <!-- Основная информация -->
+            <div class="cruise-detail-main" id="cruise-info"></div>
+            <!-- Карточка бронирования -->
+            <div class="cruise-detail-sidebar" id="booking-container"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-bottom">
+            <span>© 2026 Starwave Cruises</span>
+            <a href="/index.html" style="color:rgba(255,255,255,.5)">← Все круизы</a>
+        </div>
+    </div>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/cruise-detail.js"></script>
+</body>
+</html>

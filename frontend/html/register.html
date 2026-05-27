@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация — Starwave Cruises</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-visual">
+        <img src="../images/caribbean.jpg" alt="Карибы" onerror="this.style.display='none'">
+        <div class="auth-visual-text">
+            <div class="auth-visual-quote">Начните своё<br>путешествие сегодня</div>
+            <div class="auth-visual-sub">Starwave Cruises</div>
+        </div>
+    </div>
+
+    <div class="auth-panel">
+        <a href="/index.html" class="auth-logo-link">Starwave Cruises</a>
+
+        <div class="auth-form-wrap">
+            <h1 class="auth-title">Регистрация</h1>
+            <p class="auth-subtitle">Создайте аккаунт и выберите круиз</p>
+
+            <div id="reg-alert"></div>
+
+            <div class="form-group">
+                <label class="form-label">Имя *</label>
+                <input class="form-input" type="text" id="name" placeholder="Иван Иванов">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input class="form-input" type="email" id="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Пароль * (мин. 6 символов)</label>
+                <input class="form-input" type="password" id="password" placeholder="••••••">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Возраст</label>
+                <input class="form-input" type="number" id="age" placeholder="25" min="1" max="120">
+            </div>
+
+            <button class="btn btn-primary btn-full" style="margin-top:8px" onclick="registerSubmit()">
+                Зарегистрироваться
+            </button>
+
+            <div class="auth-switch">
+                Уже есть аккаунт? <a href="/html/login.html">Войдите</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/utils.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script>
+async function registerSubmit() {
+    clearAlert('reg-alert');
+
+    const name     = document.getElementById('name').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const age      = document.getElementById('age').value;
+
+    if (!name || !email || !password) {
+        showAlert('reg-alert', 'Заполните обязательные поля (*)');
+        return;
+    }
+    if (password.length < 6) {
+        showAlert('reg-alert', 'Пароль должен быть не менее 6 символов');
+        return;
+    }
+
+    const body = { name, email, password };
+    if (age) body.age = +age;
+
+    try {
+        const data = await AuthAPI.register(body);
+        Auth.save(data);
+        window.location.href = '/index.html';
+    } catch (e) {
+        showAlert('reg-alert', e.message);
+    }
+}
+</script>
+</body>
+</html>

@@ -15,7 +15,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Обработка нашего кастомного исключения
+    // Обработка кастомного исключения
     @ExceptionHandler(ApiException.class)
     public ResponseEntity<Map<String, Object>> handleApiException(ApiException ex) {
         return buildResponse(ex.getMessage(), ex.getStatus());

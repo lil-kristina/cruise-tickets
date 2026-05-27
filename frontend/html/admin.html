@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора — Starwave Cruises</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<div class="topbar">
+    Горячая линия: <strong>+7 800 555-35-35</strong> &nbsp;·&nbsp; Ежедневно 9:00–21:00
+</div>
+
+<nav class="navbar">
+    <a href="/index.html" class="nav-logo">Starwave <span>Cruises</span></a>
+    <div class="nav-spacer"></div>
+    <div class="nav-actions" id="nav-actions"></div>
+</nav>
+
+<div id="admin-alert" style="padding:0 40px"></div>
+
+<div class="panel-layout">
+
+    <!-- Боковое меню -->
+    <aside class="panel-sidebar">
+        <div class="panel-sidebar-label">Управление</div>
+        <ul class="panel-nav">
+            <li>
+                <button id="btn-cruises" class="panel-nav-btn"
+                    onclick="AdminPage.showPage('cruises'); AdminPage.loadCruises()">
+                    🚢 Рейсы
+                </button>
+            </li>
+            <li>
+                <button id="btn-create-cruise" class="panel-nav-btn"
+                    onclick="AdminPage.showCreateForm()">
+                    ➕ Создать рейс
+                </button>
+            </li>
+            <li>
+                <button id="btn-tickets" class="panel-nav-btn"
+                    onclick="AdminPage.showPage('tickets'); AdminPage.loadTickets()">
+                    🎫 Все билеты
+                </button>
+            </li>
+            <li>
+                <button id="btn-users" class="panel-nav-btn"
+                    onclick="AdminPage.showPage('users'); AdminPage.loadUsers()">
+                    👥 Пользователи
+                </button>
+            </li>
+        </ul>
+        <div class="panel-sidebar-label">Аккаунт</div>
+        <ul class="panel-nav">
+            <li>
+                <button class="panel-nav-btn" onclick="Auth.logout()">
+                    🚪 Выйти
+                </button>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Основная область -->
+    <main class="panel-main">
+
+        <!-- Рейсы -->
+        <div id="page-cruises" class="panel-page">
+            <div class="panel-page-title">Рейсы</div>
+            <div class="panel-page-sub">Управление круизными рейсами</div>
+            <div id="admin-cruises"></div>
+        </div>
+
+        <!-- Создать рейс -->
+        <div id="page-create-cruise" class="panel-page">
+            <div class="panel-page-title">Создать рейс</div>
+            <div class="panel-page-sub">Добавить новый круизный рейс</div>
+
+            <div class="card" style="max-width:600px">
+                <div class="card-body">
+                    <div id="create-alert"></div>
+                    <div class="form-grid-2">
+                        <div class="form-group span-2">
+                            <label class="form-label">Тип круиза</label>
+                            <select class="form-select" id="new-type">
+                                <option id="types-list">Загрузка...</option>
+                            </select>
+                        </div>
+                        <div class="form-group span-2">
+                            <label class="form-label">Корабль</label>
+                            <select class="form-select" id="new-ship">
+                                <option id="ships-list">Загрузка...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Дата отплытия</label>
+                            <input class="form-input" type="date" id="new-departure">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Дата возвращения</label>
+                            <input class="form-input" type="date" id="new-return">
+                        </div>
+                        <div class="form-group span-2">
+                            <label class="form-label">Количество мест</label>
+                            <input class="form-input" type="number" id="new-seats" min="1" placeholder="100">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="AdminPage.createCruise()">
+                        Создать рейс
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Все билеты -->
+        <div id="page-tickets" class="panel-page">
+            <div class="panel-page-title">Все билеты</div>
+            <div class="panel-page-sub">Просмотр и управление билетами</div>
+            <div id="admin-tickets"></div>
+        </div>
+
+        <!-- Пользователи -->
+        <div id="page-users" class="panel-page">
+            <div class="panel-page-title">Пользователи</div>
+            <div class="panel-page-sub">Список зарегистрированных пользователей</div>
+            <div id="admin-users"></div>
+        </div>
+
+    </main>
+</div>
+
+<script src="../js/utils.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

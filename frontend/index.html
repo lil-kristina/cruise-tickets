@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starwave Cruises</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+    Горячая линия: <strong>+7 800 555-35-35</strong> &nbsp;·&nbsp; Ежедневно 9:00–21:00
+</div>
+
+<nav class="navbar">
+    <a href="/index.html" class="nav-logo">
+        Starwave <span>Cruises</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="/index.html#cruises" class="active">Круизы</a></li>
+        <li><a href="/index.html#destinations">Направления</a></li>
+        <li><a href="/index.html#about">О нас</a></li>
+    </ul>
+    <div class="nav-spacer"></div>
+    <div class="nav-actions" id="nav-actions"></div>
+</nav>
+
+<!-- Герой -->
+<section class="hero">
+    <div class="hero-bg">
+        <img src="images/hero-bg.jpg" alt="Море" onerror="this.style.display='none'">
+    </div>
+    <div class="hero-overlay">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-label">Откройте мир с нами</p>
+                <h1 class="hero-title">Путешествия,<br><em>которые остаются</em><br>в памяти навсегда</h1>
+                <p class="hero-subtitle">Три уникальных маршрута — Средиземноморье, Карибы и Северные фьорды.</p>
+                <div class="hero-actions">
+                    <a href="#cruises" class="btn btn-gold btn-lg">Смотреть круизы</a>
+                    <a href="#about"   class="btn btn-lg hero-btn-ghost">Узнать больше</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Строка поиска -->
+    <div class="search-bar-wrap">
+        <div class="container">
+            <div class="search-bar">
+                <div class="search-field">
+                    <label class="search-label">Направление</label>
+                    <select class="search-input" id="filter-type">
+                        <option value="">Все направления</option>
+                    </select>
+                </div>
+                <div class="search-sep"></div>
+                <div class="search-field">
+                    <label class="search-label">Дата с</label>
+                    <input type="date" class="search-input" id="filter-date">
+                </div>
+                <button class="btn btn-primary search-btn" onclick="CruisesPage.applyFilters()">
+                    Найти
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Цифры -->
+<section class="section section-white">
+    <div class="container">
+        <div class="numbers-row">
+            <div class="number-item"><div class="number-val">3</div><div class="number-lbl">Маршрута</div></div>
+            <div class="number-item"><div class="number-val">5★</div><div class="number-lbl">Сервис</div></div>
+            <div class="number-item"><div class="number-val">1200+</div><div class="number-lbl">Гостей</div></div>
+            <div class="number-item"><div class="number-val">3</div><div class="number-lbl">Лайнера</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Каталог круизов -->
+<section class="section" id="cruises">
+    <div class="container">
+        <div class="section-label">Наши маршруты</div>
+        <h2 class="section-title">Доступные <em>круизы</em></h2>
+        <p class="section-subtitle">Выберите направление и забронируйте место на борту</p>
+        <div style="margin-top:36px" id="cruises-container"></div>
+    </div>
+</section>
+
+<!-- Направления -->
+<section class="section section-white" id="destinations">
+    <div class="container">
+        <div class="section-label text-center">Направления</div>
+        <h2 class="section-title text-center">Три <em>маршрута</em> мечты</h2>
+        <div class="dest-grid" style="margin-top:36px">
+            <div class="dest-card">
+                <div class="dest-img">
+                    <img src="images/mediterranean.jpg" alt="Средиземноморье" onerror="this.parentElement.innerHTML='🌊'">
+                </div>
+                <div class="dest-body">
+                    <h3 class="dest-title">Средиземноморский</h3>
+                    <p class="dest-info">14 ночей · Рим, Афины, Барселона</p>
+                    <p class="dest-price">от 1 500 $</p>
+                </div>
+            </div>
+            <div class="dest-card">
+                <div class="dest-img">
+                    <img src="images/caribbean.jpg" alt="Карибы" onerror="this.parentElement.innerHTML='🏝'">
+                </div>
+                <div class="dest-body">
+                    <h3 class="dest-title">Карибский</h3>
+                    <p class="dest-info">10 ночей · Ямайка, Барбадос, Кюрасао</p>
+                    <p class="dest-price">от 1 200 $</p>
+                </div>
+            </div>
+            <div class="dest-card">
+                <div class="dest-img">
+                    <img src="images/nordic.jpg" alt="Фьорды" onerror="this.parentElement.innerHTML='🏔'">
+                </div>
+                <div class="dest-body">
+                    <h3 class="dest-title">Северный (фьорды)</h3>
+                    <p class="dest-info">7 ночей · Норвегия, Исландия</p>
+                    <p class="dest-price">от 1 100 $</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- О нас -->
+<section class="section section-teal" id="about">
+    <div class="container">
+        <div class="about-layout">
+            <div>
+                <div class="section-label">О компании</div>
+                <h2 class="section-title">Starwave Cruises —<br><em>ваш компас</em> в море</h2>
+                <p class="about-desc">Мы предлагаем незабываемые круизные путешествия по трём самым живописным маршрутам мира. Наши лайнеры оснащены по последнему слову техники, а команда профессионалов обеспечивает комфорт на каждом шагу.</p>
+                <div class="about-features">
+                    <div class="about-feat"><span>⚓</span><div><strong>Три класса обслуживания</strong><p>Эконом, Бизнес и Люкс — для любого бюджета</p></div></div>
+                    <div class="about-feat"><span>🌊</span><div><strong>Опытная команда</strong><p>Профессионалы с многолетним опытом на море</p></div></div>
+                    <div class="about-feat"><span>⭐</span><div><strong>Гарантия качества</strong><p>Возврат средств при отмене за 14 дней</p></div></div>
+                </div>
+            </div>
+            <div class="about-img">
+                <img src="images/hero-bg.jpg" alt="Лайнер" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">Starwave Cruises</div>
+                <div class="footer-tagline">Путешествия к горизонту</div>
+                <p class="footer-desc">Круизные путешествия по самым красивым местам планеты.</p>
+            </div>
+            <div>
+                <div class="footer-col-title">Маршруты</div>
+                <ul class="footer-links">
+                    <li><a href="#cruises">Средиземноморский</a></li>
+                    <li><a href="#cruises">Карибский</a></li>
+                    <li><a href="#cruises">Северный</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Аккаунт</div>
+                <ul class="footer-links">
+                    <li><a href="/html/login.html">Войти</a></li>
+                    <li><a href="/html/register.html">Регистрация</a></li>
+                    <li><a href="/html/profile.html">Мои билеты</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Контакты</div>
+                <ul class="footer-links">
+                    <li><a href="#">+7 800 555-35-35</a></li>
+                    <li><a href="#">info@starwave.ru</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Starwave Cruises</span>
+            <span>Учебный проект</span>
+        </div>
+    </div>
+</footer>
+
+<style>
+.hero { position: relative; min-height: 580px; display: flex; flex-direction: column; }
+.hero-bg { position: absolute; inset: 0; overflow: hidden; background: #1a2e3b; }
+.hero-bg img { width:100%; height:100%; object-fit:cover; }
+.hero-overlay {
+    position: relative; flex: 1;
+    background: linear-gradient(to bottom right, rgba(26,46,59,.72), rgba(26,107,94,.45));
+    display: flex; align-items: center;
+    padding: 90px 0 110px;
+}
+.hero-content { max-width: 600px; color: #fff; }
+.hero-label { font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:14px; }
+.hero-title { font-family:var(--font-title); font-size:56px; font-weight:300; line-height:1.1; margin-bottom:18px; }
+.hero-title em { font-style:italic; color:#f5d68a; }
+.hero-subtitle { font-size:16px; color:rgba(255,255,255,.8); line-height:1.7; margin-bottom:28px; max-width:460px; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.hero-btn-ghost { background:rgba(255,255,255,.15); color:#fff; border:1.5px solid rgba(255,255,255,.4); }
+.hero-btn-ghost:hover { background:rgba(255,255,255,.25); }
+
+.search-bar-wrap { background:#fff; border-top:1px solid var(--border); }
+.search-bar { display:flex; align-items:center; height:66px; max-width:1200px; margin:0 auto; padding:0 40px; }
+.search-field { flex:1; display:flex; flex-direction:column; padding:0 16px; }
+.search-label { font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-light); margin-bottom:3px; }
+.search-input { border:none; outline:none; font-size:14px; color:var(--text-dark); background:transparent; font-family:var(--font-body); }
+.search-sep { width:1px; height:36px; background:var(--border); flex-shrink:0; }
+.search-btn { border-radius:0; height:66px; padding:0 32px; flex-shrink:0; }
+
+.numbers-row { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.number-item { padding:32px 20px; text-align:center; border-right:1px solid var(--border); }
+.number-item:last-child { border-right:none; }
+.number-val { font-family:var(--font-title); font-size:44px; font-weight:600; color:var(--teal); line-height:1; margin-bottom:6px; }
+.number-lbl { font-size:13px; color:var(--text-mid); }
+
+.dest-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.dest-card { background:#fff; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow); transition:transform var(--transition),box-shadow var(--transition); }
+.dest-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(26,46,59,.14); }
+.dest-img { height:190px; overflow:hidden; background:var(--teal-light); display:flex; align-items:center; justify-content:center; font-size:60px; }
+.dest-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+.dest-card:hover .dest-img img { transform:scale(1.06); }
+.dest-body { padding:18px 20px; }
+.dest-title { font-family:var(--font-title); font-size:21px; font-weight:400; margin-bottom:4px; }
+.dest-info { font-size:13px; color:var(--text-mid); margin-bottom:8px; }
+.dest-price { font-family:var(--font-title); font-size:20px; font-weight:600; color:var(--teal); }
+
+.about-layout { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+.about-desc { font-size:15px; color:var(--text-mid); line-height:1.8; margin:18px 0 24px; }
+.about-features { display:flex; flex-direction:column; gap:16px; }
+.about-feat { display:flex; gap:12px; align-items:flex-start; }
+.about-feat span { font-size:20px; flex-shrink:0; margin-top:2px; }
+.about-feat strong { display:block; font-size:14px; color:var(--text-dark); margin-bottom:2px; }
+.about-feat p { font-size:13px; color:var(--text-mid); }
+.about-img { border-radius:var(--radius); overflow:hidden; height:380px; }
+.about-img img { width:100%; height:100%; object-fit:cover; }
+
+@media(max-width:900px){
+    .hero-title { font-size:36px; }
+    .search-bar { flex-direction:column; height:auto; padding:12px 20px; gap:8px; }
+    .search-sep { display:none; }
+    .search-btn { width:100%; height:44px; border-radius:6px; }
+    .numbers-row { grid-template-columns:repeat(2,1fr); }
+    .number-item:nth-child(2) { border-right:none; }
+    .dest-grid { grid-template-columns:1fr; }
+    .about-layout { grid-template-columns:1fr; }
+    .about-img { height:240px; }
+}
+</style>
+
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/cruises.js"></script>
+</body>
+</html>

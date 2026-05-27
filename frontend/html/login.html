@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти — Starwave Cruises</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+    <!-- Левая панель — фото -->
+    <div class="auth-visual">
+        <img src="../images/hero-bg.jpg" alt="Море" onerror="this.style.display='none'">
+        <div class="auth-visual-text">
+            <div class="auth-visual-quote">Море зовёт —<br>мы готовы</div>
+            <div class="auth-visual-sub">Starwave Cruises</div>
+        </div>
+    </div>
+
+    <!-- Правая панель — форма -->
+    <div class="auth-panel">
+        <a href="/index.html" class="auth-logo-link">Starwave Cruises</a>
+
+        <div class="auth-form-wrap">
+            <h1 class="auth-title">Добро пожаловать</h1>
+            <p class="auth-subtitle">Войдите в свой аккаунт</p>
+
+            <div id="login-alert"></div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input class="form-input" type="email" id="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Пароль</label>
+                <input class="form-input" type="password" id="password" placeholder="••••••">
+            </div>
+
+            <button class="btn btn-primary btn-full" style="margin-top:8px" onclick="loginSubmit()">
+                Войти
+            </button>
+
+            <div class="auth-switch">
+                Нет аккаунта? <a href="/html/register.html">Зарегистрируйтесь</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/utils.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script>
+async function loginSubmit() {
+    clearAlert('login-alert');
+    const email    = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (!email || !password) {
+        showAlert('login-alert', 'Заполните все поля');
+        return;
+    }
+
+    try {
+        const data = await AuthAPI.login({ email, password });
+        Auth.save(data);
+
+        // Редирект по роли
+        if (data.role === 'OWNER')      window.location.href = '/html/owner.html';
+        else if (data.role === 'ADMIN') window.location.href = '/html/admin.html';
+        else                            window.location.href = '/index.html';
+    } catch (e) {
+        showAlert('login-alert', e.message);
+    }
+}
+
+// Enter для отправки
+document.addEventListener('keydown', e => { if (e.key === 'Enter') loginSubmit(); });
+</script>
+</body>
+</html>

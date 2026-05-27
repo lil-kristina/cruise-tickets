@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой профиль — Starwave Cruises</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<div class="topbar">
+    Горячая линия: <strong>+7 800 555-35-35</strong> &nbsp;·&nbsp; Ежедневно 9:00–21:00
+</div>
+
+<nav class="navbar">
+    <a href="/index.html" class="nav-logo">Starwave <span>Cruises</span></a>
+    <ul class="nav-links">
+        <li><a href="/index.html#cruises">Круизы</a></li>
+        <li><a href="/index.html#destinations">Направления</a></li>
+        <li><a href="/index.html#about">О нас</a></li>
+    </ul>
+    <div class="nav-spacer"></div>
+    <div class="nav-actions" id="nav-actions"></div>
+</nav>
+
+<div class="page-header">
+    <div class="container">
+        <div class="page-header-title">Личный кабинет</div>
+        <div class="page-header-sub">Ваш профиль и история билетов</div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="profile-alert"></div>
+    <div class="profile-layout">
+
+        <!-- Левая колонка: информация о пользователе -->
+        <div>
+            <div class="card profile-info-card">
+                <div class="profile-avatar" id="profile-avatar">?</div>
+                <div class="profile-name"  id="profile-name">—</div>
+                <div class="profile-email" id="profile-email">—</div>
+                <div class="profile-role"  id="profile-role">—</div>
+                <div style="margin-top:20px">
+                    <a href="/index.html" class="btn btn-outline btn-full">
+                        Найти круиз
+                    </a>
+                </div>
+                <div style="margin-top:10px">
+                    <button class="btn btn-full" style="background:none;border:1.5px solid var(--border);color:var(--text-mid)"
+                        onclick="Auth.logout()">
+                        Выйти
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: мои билеты -->
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Мои билеты</div>
+                </div>
+                <div class="card-body">
+                    <div id="tickets-container"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-bottom">
+            <span>© 2026 Starwave Cruises</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/profile.js"></script>
+</body>
+</html>

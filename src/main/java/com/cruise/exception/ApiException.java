@@ -15,7 +15,7 @@ public class ApiException extends RuntimeException {
         return status;
     }
 
-    // Удобные фабричные методы
+    // фабричные методы
     public static ApiException notFound(String message) {
         return new ApiException(message, HttpStatus.NOT_FOUND);
     }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель владельца — Starwave Cruises</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<div class="topbar">
+    Горячая линия: <strong>+7 800 555-35-35</strong> &nbsp;·&nbsp; Ежедневно 9:00–21:00
+</div>
+
+<nav class="navbar">
+    <a href="/index.html" class="nav-logo">Starwave <span>Cruises</span></a>
+    <div class="nav-spacer"></div>
+    <div class="nav-actions" id="nav-actions"></div>
+</nav>
+
+<div id="owner-alert" style="padding:0 40px"></div>
+
+<div class="panel-layout">
+
+    <!-- Боковое меню -->
+    <aside class="panel-sidebar">
+        <div class="panel-sidebar-label">Аналитика</div>
+        <ul class="panel-nav">
+            <li>
+                <button id="btn-stats" class="panel-nav-btn"
+                    onclick="OwnerPage.showPage('stats'); OwnerPage.loadStats()">
+                    📊 Статистика
+                </button>
+            </li>
+        </ul>
+        <div class="panel-sidebar-label">Управление</div>
+        <ul class="panel-nav">
+            <li>
+                <button id="btn-cruises" class="panel-nav-btn"
+                    onclick="OwnerPage.showPage('cruises'); OwnerPage.loadCruises()">
+                    🚢 Рейсы
+                </button>
+            </li>
+            <li>
+                <button id="btn-tickets" class="panel-nav-btn"
+                    onclick="OwnerPage.showPage('tickets'); OwnerPage.loadTickets()">
+                    🎫 Все билеты
+                </button>
+            </li>
+            <li>
+                <button id="btn-users" class="panel-nav-btn"
+                    onclick="OwnerPage.showPage('users'); OwnerPage.loadUsers()">
+                    👥 Пользователи
+                </button>
+            </li>
+        </ul>
+        <div class="panel-sidebar-label">Аккаунт</div>
+        <ul class="panel-nav">
+            <li>
+                <button class="panel-nav-btn" onclick="Auth.logout()">
+                    🚪 Выйти
+                </button>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Основная область -->
+    <main class="panel-main">
+
+        <!-- Статистика -->
+        <div id="page-stats" class="panel-page">
+            <div class="panel-page-title">Статистика</div>
+            <div class="panel-page-sub">Общая сводка по системе</div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value" id="stat-users">—</div>
+                    <div class="stat-label">Пользователей</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚢</div>
+                    <div class="stat-value" id="stat-cruises">—</div>
+                    <div class="stat-label">Активных рейсов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎫</div>
+                    <div class="stat-value" id="stat-tickets">—</div>
+                    <div class="stat-label">Куплено билетов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value" id="stat-revenue">—</div>
+                    <div class="stat-label">Выручка</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Рейсы -->
+        <div id="page-cruises" class="panel-page">
+            <div class="panel-page-title">Все рейсы</div>
+            <div class="panel-page-sub">Управление круизными рейсами</div>
+            <div id="owner-cruises"></div>
+        </div>
+
+        <!-- Все билеты -->
+        <div id="page-tickets" class="panel-page">
+            <div class="panel-page-title">Все билеты</div>
+            <div class="panel-page-sub">Полная история продаж</div>
+            <div id="owner-tickets"></div>
+        </div>
+
+        <!-- Пользователи -->
+        <div id="page-users" class="panel-page">
+            <div class="panel-page-title">Пользователи</div>
+            <div class="panel-page-sub">Управление пользователями системы</div>
+            <div id="owner-users"></div>
+        </div>
+
+    </main>
+</div>
+
+<script src="../js/utils.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/owner.js"></script>
+</body>
+</html>
