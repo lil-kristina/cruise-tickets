@@ -498,6 +498,67 @@ footer {
 .gap-8  { gap: 8px; }
 .gap-12 { gap: 12px; }
 
+/* ── Строка поиска на главной */
+.search-bar-wrap {
+    background: #fff;
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 10;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    height: 66px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    background: #fff;
+}
+
+.search-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+}
+
+.search-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 3px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: transparent;
+    font-family: var(--font-body);
+    width: 100%;
+    cursor: pointer;
+}
+
+.search-sep {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+.search-btn {
+    border-radius: 0;
+    height: 66px;
+    padding: 0 32px;
+    flex-shrink: 0;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+}
+
 /* ── Адаптив */
 @media (max-width: 900px) {
     .container { padding: 0 20px; }

@@ -24,17 +24,20 @@
     <div class="nav-actions" id="nav-actions"></div>
 </nav>
 
-<!-- Герой загружается динамически -->
-<div class="cruise-hero" id="cruise-hero"></div>
+<div class="cruise-hero" id="cruise-hero">
+    <div class="img-placeholder">🚢</div>
+</div>
 
 <div class="container">
-    <div id="detail-container">
-        <div class="cruise-detail-layout">
-            <!-- Основная информация -->
-            <div class="cruise-detail-main" id="cruise-info"></div>
-            <!-- Карточка бронирования -->
-            <div class="cruise-detail-sidebar" id="booking-container"></div>
+    <div class="cruise-detail-layout">
+        <div class="cruise-detail-main" id="cruise-info">
+            <div class="loader">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
         </div>
+        <div class="cruise-detail-sidebar" id="booking-container"></div>
     </div>
 </div>
 

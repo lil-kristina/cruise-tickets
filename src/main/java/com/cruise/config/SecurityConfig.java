@@ -1,7 +1,7 @@
 package com.cruise.config;
 
 import com.cruise.security.JwtFilter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,10 +24,10 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-@RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final JwtFilter jwtFilter;
+    @Autowired
+    private JwtFilter jwtFilter;
 
     @Value("${app.cors.allowed-origins}")
     private String allowedOrigins;
@@ -39,20 +39,16 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // Публичные эндпоинты
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/cruises/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/cruise-types/**").permitAll()
-                        // Только для аутентифицированных
                         .requestMatchers("/api/tickets/**").authenticated()
                         .requestMatchers("/api/users/me").authenticated()
-                        // Только ADMIN и OWNER
                         .requestMatchers(HttpMethod.GET, "/api/users").hasAnyRole("ADMIN", "OWNER")
                         .requestMatchers(HttpMethod.POST, "/api/cruises/**").hasAnyRole("ADMIN", "OWNER")
                         .requestMatchers(HttpMethod.PUT, "/api/cruises/**").hasAnyRole("ADMIN", "OWNER")
-                        // Только OWNER
                         .requestMatchers(HttpMethod.DELETE, "/api/cruises/**").hasRole("OWNER")
-                        .requestMatchers("/api/ships/**").hasRole("OWNER")
+                        .requestMatchers("/api/ships/**").hasAnyRole("ADMIN", "OWNER")
                         .requestMatchers("/api/stats/**").hasRole("OWNER")
                         .anyRequest().authenticated()
                 )

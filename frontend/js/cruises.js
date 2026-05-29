@@ -43,6 +43,13 @@ const CruisesPage = {
         }
 
         el.innerHTML = `<div class="cruise-grid">${list.map(c => this.cardHTML(c)).join('')}</div>`;
+
+        // Автовыбор класса из URL если пришли с фильтром
+        const preClass = getParam('class');
+        if (preClass) {
+            const cl = this.classes.find(c => c.name === preClass);
+            if (cl) this.selectClass(cl.id);
+        }
     },
 
     cardHTML(c) {
@@ -51,7 +58,7 @@ const CruisesPage = {
             : `<div class="img-placeholder">🚢</div>`;
 
         return `
-        <div class="cruise-card" onclick="window.location.href='/html/cruise-detail.html?id=${c.id}'">
+        <div class="cruise-card" onclick="window.location.href='/html/cruise-detail.html?id=${c.id}${c._preselectedClass ? '&class=' + c._preselectedClass : ''}'">
             <div class="cruise-card-img">${imgSrc}</div>
             <div class="cruise-card-body">
                 <div class="cruise-card-type">${c.cruiseType}</div>
@@ -74,14 +81,16 @@ const CruisesPage = {
     },
 
     applyFilters() {
-        const type  = document.getElementById('filter-type')?.value  || '';
-        const date  = document.getElementById('filter-date')?.value  || '';
+    const type  = document.getElementById('filter-type')?.value  || '';
+    const date  = document.getElementById('filter-date')?.value  || '';
+    const cls   = document.getElementById('filter-class')?.value || '';
 
-        let list = this.all;
-        if (type) list = list.filter(c => c.cruiseType === type);
-        if (date) list = list.filter(c => c.departureDate >= date);
-        this.render(list);
-    }
+    let list = this.all;
+    if (type) list = list.filter(c => c.cruiseType === type);
+    if (date) list = list.filter(c => c.departureDate >= date);
+    if (cls) list = list.map(c => ({ ...c, _preselectedClass: cls }));
+    this.render(list);
+},
 };
 
 document.addEventListener('DOMContentLoaded', () => CruisesPage.init());

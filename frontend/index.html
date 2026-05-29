@@ -45,23 +45,31 @@
     </div>
     <!-- Строка поиска -->
     <div class="search-bar-wrap">
-        <div class="container">
-            <div class="search-bar">
-                <div class="search-field">
-                    <label class="search-label">Направление</label>
-                    <select class="search-input" id="filter-type">
-                        <option value="">Все направления</option>
-                    </select>
-                </div>
-                <div class="search-sep"></div>
-                <div class="search-field">
-                    <label class="search-label">Дата с</label>
-                    <input type="date" class="search-input" id="filter-date">
-                </div>
-                <button class="btn btn-primary search-btn" onclick="CruisesPage.applyFilters()">
-                    Найти
-                </button>
+        <div class="search-bar">
+            <div class="search-field">
+                <label class="search-label">Направление</label>
+                <select class="search-input" id="filter-type">
+                    <option value="">Все направления</option>
+                </select>
             </div>
+            <div class="search-sep"></div>
+            <div class="search-field">
+                <label class="search-label">Дата с</label>
+                <input type="date" class="search-input" id="filter-date">
+            </div>
+            <div class="search-sep"></div>
+            <div class="search-field">
+                <label class="search-label">Класс</label>
+                <select class="search-input" id="filter-class">
+                    <option value="">Любой класс</option>
+                    <option value="ECONOMY">Эконом</option>
+                    <option value="BUSINESS">Бизнес</option>
+                    <option value="LUXURY">Люкс</option>
+                </select>
+            </div>
+            <button class="btn btn-primary search-btn" onclick="CruisesPage.applyFilters()">
+                Найти
+            </button>
         </div>
     </div>
 </section>
@@ -206,14 +214,6 @@
 .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
 .hero-btn-ghost { background:rgba(255,255,255,.15); color:#fff; border:1.5px solid rgba(255,255,255,.4); }
 .hero-btn-ghost:hover { background:rgba(255,255,255,.25); }
-
-.search-bar-wrap { background:#fff; border-top:1px solid var(--border); }
-.search-bar { display:flex; align-items:center; height:66px; max-width:1200px; margin:0 auto; padding:0 40px; }
-.search-field { flex:1; display:flex; flex-direction:column; padding:0 16px; }
-.search-label { font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-light); margin-bottom:3px; }
-.search-input { border:none; outline:none; font-size:14px; color:var(--text-dark); background:transparent; font-family:var(--font-body); }
-.search-sep { width:1px; height:36px; background:var(--border); flex-shrink:0; }
-.search-btn { border-radius:0; height:66px; padding:0 32px; flex-shrink:0; }
 
 .numbers-row { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
 .number-item { padding:32px 20px; text-align:center; border-right:1px solid var(--border); }
